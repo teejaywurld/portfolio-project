@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+    <div class="container">
+            <div class="row my-5">
+                {% if project %}
+                    <div class="col-nd-6">
+                 <p>{{ project.id }}|{{project.title}}</p>
+                 <img width="550px" src="{{ project.image }}" alt="Project image">
+               </div>
+                    <div class="col-nd-6">
+                       <h6>Description</h6>
+                        <small>{{ project.description }}</small>
+                        <br>
+                        <small>{{ project.date_created }}</small>
+                    </div>
+                    {% else %}
+                    <h1>Nothing to display</h1>
+                    {% endif %}
+               </div>
+                <div class="row">
+                    <a href="{% url 'view_all_projects' %}" > <button>View all projects</button></a>
+                     <a href="{% url 'update_projects' project.id %}" ><button>Update Project</button></a>
+                    <a href="{% url 'delete_projects' project.id %}" ><button> Delete</button></a>
+
+                </div>
+            </div>
+{% endblock %}

@@ -9,6 +9,9 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
+import os
+from pathlib import Path
+import cloudinary
 
 from pathlib import Path
 
@@ -37,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 'hello_world',
     'projects',
+    'cloudinary',
+
 ]
 
 MIDDLEWARE = [
@@ -117,3 +122,10 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+cloudinary.config(
+  cloud_name = "c9-jay",
+  api_key = "259825725797434",
+  api_secret = "hDwtS5idjqp3hWWxiH4MYy8wUMw"
+)

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+    <div class="container">
+
+    <a style="text-decoration: none; color: green;" href={% url 'view_all_projects' %}>
+       <h1>Projects</h1>
+    </a>
+        <br>
+    <div class="row">
+    <a href="{% url 'create_projects' %}">
+        <button>Create Project</button>
+    </a>
+    </div>
+    <div class="col-md-6">
+        <form action="" method="post">
+            {% csrf_token %}
+            <input type="text" name="filter">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+            <div class="row">
+                 {%for project in projects%}
+               <div class="col-md-4 my-2">
+                    <a style="text-decoration: none; color: black;" href="{{ project.id }}">
+                        <div class="card">
+                            <div class="">
+                                <span>{{project.id  }} | {{project.title}}</span>
+                            </div>
+                              <img src="{{ project.image }}" alt="Project image" >
+                                <small>{{ project.description | slice:":100" }}...</small>
+                              </div>
+                    </a>
+
+               </div>
+
+       {% endfor %}
+            </div>
+</div>
+{% endblock %}
